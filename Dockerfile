@@ -1,6 +1,6 @@
 FROM debian:buster-slim
-ARG version
-ARG subdist
+ARG version=2-dev6514
+ARG subdist=nightly
 
 ENV GOSU_VERSION 1.11
 
@@ -57,6 +57,10 @@ ENV VERSION ${version}
 EXPOSE 5656
 
 VOLUME /var/lib/edgedb/data
+
+chmod +x ./docker-entrypoint.sh
+chmod +x ./docker-entrypoint-funcs.sh
+chmod +x ./edgedb-show-secrets.sh
 
 COPY docker-entrypoint-funcs.sh docker-entrypoint.sh edgedb-show-secrets.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
