@@ -58,9 +58,9 @@ EXPOSE 5656
 
 VOLUME /var/lib/edgedb/data
 
-chmod +x ./docker-entrypoint.sh
-chmod +x ./docker-entrypoint-funcs.sh
-chmod +x ./edgedb-show-secrets.sh
+RUN chmod +x ./docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint-funcs.sh
+RUN chmod +x ./edgedb-show-secrets.sh
 
 COPY docker-entrypoint-funcs.sh docker-entrypoint.sh edgedb-show-secrets.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
